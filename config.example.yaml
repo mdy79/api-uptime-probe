@@ -1,0 +1,30 @@
+endpoints:
+  - id: web-frontend
+    name: "Web Portal"
+    url: "https://httpbin.org/status/200"
+    interval: 30
+    timeout: 5
+    expected_status: [200]
+    failure_threshold: 2
+    recovery_threshold: 2
+
+  - id: core-api-health
+    name: "Core API Healthcheck"
+    url: "https://httpbin.org/json"
+    interval: 15
+    timeout: 3
+    expected_status: [200]
+    body_contains: "slideshow"
+    failure_threshold: 2
+    recovery_threshold: 1
+
+telegram:
+  enabled: false
+  bot_token: "${TELEGRAM_BOT_TOKEN}"
+  chat_id: "${TELEGRAM_CHAT_ID}"
+
+discord:
+  enabled: false
+  webhook_url: "${DISCORD_WEBHOOK_URL}"
+
+concurrency_limit: 10

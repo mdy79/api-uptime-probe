@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "api-uptime-probe"
+version = "0.2.0"
+authors = [
+    { name = "Mehrad Dadgar", email = "mehraddadgar116@gmail.com" }
+]
+description = "Asynchronous HTTP service uptime probe and health monitor with Telegram and Discord alerts"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "httpx>=0.24.0",
+    "pyyaml>=6.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0",
+    "respx>=0.20.0"
+]
+
+[project.scripts]
+api-uptime-probe = "api_uptime_probe.cli:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+asyncio_mode = "auto"
