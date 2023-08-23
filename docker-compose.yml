@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  uptime-probe:
+    build: .
+    restart: unless-stopped
+    volumes:
+      - ./config.yaml:/etc/api-uptime-probe/config.yaml:ro
+    environment:
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN:-}
+      - TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID:-}
+      - DISCORD_WEBHOOK_URL=${DISCORD_WEBHOOK_URL:-}
